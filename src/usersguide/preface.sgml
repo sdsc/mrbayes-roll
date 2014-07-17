@@ -1,0 +1,17 @@
+<preface id="preface" xreflabel="preface">
+<title>Preface</title>
+
+
+<para>
+The mrbayes Roll installs and configures the  mrbayes code to calculate Bayesian inference and model choice across a wide range of phylogenetic and evolutionary models
+</para>
+
+
+<para>
+Please visit the <ulink
+url="http://mrbayes.sourceforge.net/">mrbayes
+site</ulink> to learn more about their release and the individual
+software components.
+</para>
+
+</preface>

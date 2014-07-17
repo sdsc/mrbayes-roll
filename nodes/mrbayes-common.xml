@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+
+<kickstart>
+
+
+	<description>
+	mrbayes http://mrbayes.sourceforge.net/
+	</description>
+
+	<copyright>
+	Copyright (c) 2000 - 2014 The Regents of the University of California.
+	All rights reserved. Rocks(r) v6.1.1 www.rocksclusters.org
+	
+	</copyright>
+
+	<changelog>
+	$Log$
+	</changelog>
+
+	<package>mrbayes</package>
+	<package>roll-mrbayes-usersguide</package>
+        <package>mrbayes-modules</package>
+        <package>mrbayes-roll-test</package>
+
+</kickstart>

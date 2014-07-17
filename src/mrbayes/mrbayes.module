@@ -1,0 +1,33 @@
+#!/bin/bash
+/bin/mkdir -m 0755 -p ROOT_PKGROOTMODULEROOT
+
+cat > ROOT_PKGROOTMODULEROOT/VERSION <<END
+#%Module1.0
+module-whatis "mrbayes"
+module-whatis "Version: VERSION"
+module-whatis "Description: mrbayes"
+module-whatis "Compiler:intel MPI:openmpi"
+set mrbayeshome /opt/mrbayes/VERSION
+setenv MRBAYES_HOME \$mrbayeshome
+prepend-path PATH \$mrbayeshome/bin
+if {  [ module-info mode load ]  } {
+      module unload mvapich2_ib
+      module load openmpi_ib
+      module load beagle
+} elseif {  [ module-info mode remove ]  } {
+      module unload beagle
+      module unload openmpi_ib
+      module load mvapich2_ib
+}
+
+END
+
+chmod 0644  ROOT_PKGROOTMODULEROOT/VERSION
+
+cat > ROOT_PKGROOTMODULEROOT/.version.VERSION <<END
+#%Module1.0
+set ModulesVersion "VERSION"
+END
+
+(cd ROOT_PKGROOTMODULEROOT; if test ! -e .version; then /bin/ln -s .version.VERSION .version; fi )
+
