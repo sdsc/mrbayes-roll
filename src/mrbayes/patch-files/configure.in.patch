@@ -1,20 +1,27 @@
---- mrbayes_3.2.2/src/configure.in	2013-08-13 07:57:52.000000000 -0700
-+++ patch-files/configure.in	2014-09-23 07:04:00.398566521 -0700
-@@ -82,13 +82,13 @@
-    fi
+--- mrbayes_3.2.2/src/configure.in	2014-09-23 08:54:18.747070586 -0700
++++ patch-files/configure.in	2014-09-23 08:55:03.192030008 -0700
+@@ -94,19 +94,19 @@
  
-    AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/beagle.h,[BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle"],
--   [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-1/libhmsbeagle/beagle.h,[BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle-1"],   
--   [AC_MSG_ERROR([beagle's library include file beagle.h is not found neither in ${with_beagle}/include/libhmsbeagle/libhmsbeagle/ nor in ${with_beagle}/include/libhmsbeagle-1/libhmsbeagle/]. You should either install beagle library from http://code.google.com/p/beagle-lib/ or disable use of beagle library by invoking configure script with option --with-beagle=no. Note: without beagle library MrBayes may run slower. )]
-+   [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-2/libhmsbeagle/beagle.h,[BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle-2"],   
-+   [AC_MSG_ERROR([beagle's library include file beagle.h is not found neither in ${with_beagle}/include/libhmsbeagle/libhmsbeagle/ nor in ${with_beagle}/include/libhmsbeagle-2/libhmsbeagle/]. You should either install beagle library from http://code.google.com/p/beagle-lib/ or disable use of beagle library by invoking configure script with option --with-beagle=no. Note: without beagle library MrBayes may run slower. )]
-    )]
-    )
+    AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/beagle.h,
+        [BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle"],
+-       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-1/libhmsbeagle/beagle.h,
+-        [BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle-1"],   
++       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-2/libhmsbeagle/beagle.h,
++        [BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle-2"],   
+         [AC_MSG_ERROR([beagle's library include file beagle.h is not found neither in 
+          ${with_beagle}/include/libhmsbeagle/libhmsbeagle/ nor in 
+-         ${with_beagle}/include/libhmsbeagle-1/libhmsbeagle/]. You should either install 
++         ${with_beagle}/include/libhmsbeagle-2/libhmsbeagle/]. You should either install 
+          beagle library from http://code.google.com/p/beagle-lib/ or disable use of 
+          beagle library by invoking configure script with option --with-beagle=no. 
+          Note: without beagle library MrBayes may run slower.)])])
     AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/platform.h,,
--   [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-1/libhmsbeagle/platform.h,,   
--   [AC_MSG_ERROR([beagle's library include file platform.h is not found neither in ${with_beagle}/include/libhmsbeagle/libhmsbeagle/ nor in ${with_beagle}/include/libhmsbeagle-1/libhmsbeagle/]. You should either install beagle library from http://code.google.com/p/beagle-lib/ or disable use of beagle library by invoking configure script with option --with-beagle=no. Note: without beagle library MrBayes may run slower. )]
-+   [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-2/libhmsbeagle/platform.h,,   
-+   [AC_MSG_ERROR([beagle's library include file platform.h is not found neither in ${with_beagle}/include/libhmsbeagle/libhmsbeagle/ nor in ${with_beagle}/include/libhmsbeagle-2/libhmsbeagle/]. You should either install beagle library from http://code.google.com/p/beagle-lib/ or disable use of beagle library by invoking configure script with option --with-beagle=no. Note: without beagle library MrBayes may run slower. )]
-    )]
-    )
-    AC_CHECK_FILE($with_beagle/lib,[BEAGLE_LIBS="-L$with_beagle/lib -lhmsbeagle"],[AC_MSG_ERROR([beagle library is not found in ${with_beagle}]. You should either install beagle library from http://code.google.com/p/beagle-lib/ or disable use of beagle library by invoking configure script with option --with-beagle=no. Note: without beagle library MrBayes may run slower.)])
+-       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-1/libhmsbeagle/platform.h,,   
++       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-2/libhmsbeagle/platform.h,,   
+         [AC_MSG_ERROR([beagle's library include file platform.h is not found neither in 
+          ${with_beagle}/include/libhmsbeagle/libhmsbeagle/ nor in 
+-         ${with_beagle}/include/libhmsbeagle-1/libhmsbeagle/]. You should either install 
++         ${with_beagle}/include/libhmsbeagle-2/libhmsbeagle/]. You should either install 
+          beagle library from http://code.google.com/p/beagle-lib/ or disable use of 
+          beagle library by invoking configure script with option --with-beagle=no. 
+          Note: without beagle library MrBayes may run slower.)])])
