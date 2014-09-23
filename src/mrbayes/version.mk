@@ -1,5 +1,5 @@
-REVISION           = r-879
-VERSION            = 3.2.2-$(REVISION)
+REVISION           = r.879
+VERSION            = 3.2.2.$(REVISION)
 PKGROOT            = /opt/mrbayes/$(VERSION)-$(REVISION)
 NAME               = mrbayes
 RELEASE            = 1
