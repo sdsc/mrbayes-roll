@@ -1,5 +1,6 @@
-VERSION            = 3.2.2
-PKGROOT            = /opt/mrbayes/$(VERSION)
+REVISION           = r-879
+VERSION            = 3.2.2-$(REVISION)
+PKGROOT            = /opt/mrbayes/$(VERSION)-$(REVISION)
 NAME               = mrbayes
 RELEASE            = 1
 TARBALL_POSTFIX    = tar.gz
@@ -7,9 +8,14 @@ TARBALL_POSTFIX    = tar.gz
 SRC_SUBDIR         = mrbayes
 
 SOURCE_NAME        = $(NAME)
-SOURCE_VERSION     = $(VERSION)
+SOURCE_VERSION     = 3.2.2
 SOURCE_SUFFIX      = tar.gz
 SOURCE_PKG         = $(SOURCE_NAME)-$(SOURCE_VERSION).$(SOURCE_SUFFIX)
 SOURCE_DIR         = $(SOURCE_NAME)_$(SOURCE_VERSION)
 
-TAR_GZ_PKGS           = $(SOURCE_PKG)
+REVISION_NAME      = mrbayes-code-879-trunk
+REVISION_SUFFIX    = zip
+REVISION_PKG       = $(REVISION_NAME).$(REVISION_SUFFIX)
+
+TAR_GZ_PKGS        = $(SOURCE_PKG)
+ZIP_PKGS           = $(REVISION_PKG)

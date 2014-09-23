@@ -64,11 +64,13 @@ include Rules.mk
 include pull.mk
 
 build: $(SRC_DIRS)
+	cp mrbayes-code-879-trunk/src/* $(SOURCE_DIR)/src
+	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
 	( \
           . /etc/profile.d/modules.sh; \
           module load intel; \
           module load openmpi_ib; \
-          module load beagle; \
+          module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \
 	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \

@@ -13,9 +13,9 @@ prepend-path PATH \$mrbayeshome/bin
 if {  [ module-info mode load ]  } {
       module unload mvapich2_ib
       module load openmpi_ib
-      module load beagle
+      module load beagle/2.1
 } elseif {  [ module-info mode remove ]  } {
-      module unload beagle
+      module unload beagle/2.1
       module unload openmpi_ib
       module load mvapich2_ib
 }

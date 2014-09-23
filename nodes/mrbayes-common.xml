@@ -18,7 +18,6 @@
 	</changelog>
 
 	<package>mrbayes</package>
-	<package>roll-mrbayes-usersguide</package>
         <package>mrbayes-modules</package>
         <package>mrbayes-roll-test</package>
 

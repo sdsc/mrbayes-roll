@@ -1,4 +1,4 @@
 NAME    	= mrbayes-modules
-VERSION 	= 1.0
-RELEASE 	= 1
+VERSION 	= 3.2.2
+RELEASE 	= 3
 RPM.EXTRAS = "AutoReq: no"
