@@ -2,7 +2,7 @@ REVISION           = r.879
 VERSION            = 3.2.2.$(REVISION)
 PKGROOT            = /opt/mrbayes/$(VERSION)
 NAME               = mrbayes
-RELEASE            = 1
+RELEASE            = 4
 TARBALL_POSTFIX    = tar.gz
 
 SRC_SUBDIR         = mrbayes
