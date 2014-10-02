@@ -91,7 +91,7 @@ install::
           cp -r examples documentation $(PKGROOT) \
 	)
 	-umount $(PKGROOT)
-	cat mrbayes.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(NAME)!g;s!VERSION!$(SOURCE_VERSION)!g" \
+	cat mrbayes.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(NAME)!g;s!VERSION!$(ACTUAL_VERSION)!g" \
 	  > $(REDHAT.ROOT)/src/build-$(NAME)-modules/$(NAME).module
 	@echo "::: Package $(NAME) install complete :::"
 
