@@ -73,6 +73,7 @@ build: $(SRC_DIRS)
           module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \
+          export CC=mpicc; \
           export CFLAGS=-xHost; \
 	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \
 	  $(MAKE); \
