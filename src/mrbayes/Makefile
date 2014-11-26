@@ -64,7 +64,6 @@ include Rules.mk
 include pull.mk
 
 build: $(SRC_DIRS)
-	cp mrbayes-code-879-trunk/src/* $(SOURCE_DIR)/src
 	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
 	( \
           . /etc/profile.d/modules.sh; \
@@ -93,7 +92,7 @@ install::
           cp -r examples documentation $(PKGROOT) \
 	)
 	-umount $(PKGROOT)
-	cat mrbayes.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(NAME)!g;s!VERSION!$(ACTUAL_VERSION)!g" \
+	cat mrbayes.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(NAME)!g;s!VERSION!$(VERSION)!g" \
 	  > $(REDHAT.ROOT)/src/build-$(NAME)-modules/$(NAME).module
 	@echo "::: Package $(NAME) install complete :::"
 

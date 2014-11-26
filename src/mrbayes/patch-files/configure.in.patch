@@ -1,8 +1,8 @@
---- mrbayes_3.2.2/src/configure.in	2014-09-23 08:54:18.747070586 -0700
-+++ patch-files/configure.in	2014-09-23 08:55:03.192030008 -0700
+--- mrbayes-3.2.3/src/configure.in	2014-10-22 04:59:37.000000000 -0700
++++ patch-files/configure.in	2014-11-26 09:55:28.773932071 -0800
 @@ -94,19 +94,19 @@
  
-    AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/beagle.h,
+     AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/beagle.h,
         [BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle"],
 -       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-1/libhmsbeagle/beagle.h,
 -        [BEAGLE_CFLAGS="-I$with_beagle/include/libhmsbeagle-1"],   
@@ -15,7 +15,7 @@
           beagle library from http://code.google.com/p/beagle-lib/ or disable use of 
           beagle library by invoking configure script with option --with-beagle=no. 
           Note: without beagle library MrBayes may run slower.)])])
-    AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/platform.h,,
+     AC_CHECK_FILE($with_beagle/include/libhmsbeagle/libhmsbeagle/platform.h,,
 -       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-1/libhmsbeagle/platform.h,,   
 +       [AC_CHECK_FILE($with_beagle/include/libhmsbeagle-2/libhmsbeagle/platform.h,,   
          [AC_MSG_ERROR([beagle's library include file platform.h is not found neither in 
