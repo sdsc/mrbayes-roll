@@ -65,6 +65,7 @@ include pull.mk
 
 build: $(SRC_DIRS)
 	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
+	patch $(SOURCE_DIR)/src/bayes.h patch-files/bayes.h.patch
 	( \
           . /etc/profile.d/modules.sh; \
           module load intel; \

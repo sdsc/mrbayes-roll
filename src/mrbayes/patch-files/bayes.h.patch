@@ -1,0 +1,11 @@
+--- mrbayes-3.2.3/src/bayes.h	2014-10-22 05:01:24.000000000 -0700
++++ patch-files/bayes.h	2014-11-26 10:22:49.564906922 -0800
+@@ -291,7 +291,7 @@
+ #define POSREAL_MIN             1E-25f
+ #define POSREAL_MAX             1E25f
+ 
+-#define CMD_STRING_LENGTH       100000
++#define CMD_STRING_LENGTH       1000000
+ 
+ #define pos(i,j,n)              ((i)*(n)+(j))
+ 
