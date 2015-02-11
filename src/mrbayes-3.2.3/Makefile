@@ -69,7 +69,7 @@ build: $(SRC_DIRS)
 	( \
           . /etc/profile.d/modules.sh; \
           module load intel; \
-          module load mvapich2_ib; \
+          module load openmpi_ib; \
           module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \
@@ -93,7 +93,7 @@ install::
           cp -r examples documentation $(PKGROOT) \
 	)
 	-umount $(PKGROOT)
-	cat mrbayes.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(SOURCE_NAME)!g;s!VERSION!$(VERSION)!g" \
+	cat mrbayes-3.2.3.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(SOURCE_NAME)!g;s!VERSION!$(VERSION)!g" \
 	  > $(REDHAT.ROOT)/src/build-$(SOURCE_NAME)-modules/$(SOURCE_NAME).module
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
