@@ -93,8 +93,8 @@ install::
           cp -r examples documentation $(PKGROOT) \
 	)
 	-umount $(PKGROOT)
-	cat mrbayes-3.2.3.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(SOURCE_NAME)!g;s!VERSION!$(VERSION)!g" \
-	  > $(REDHAT.ROOT)/src/build-$(SOURCE_NAME)-modules/$(SOURCE_NAME).module
+	cat mrbayes-3.2.3.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(SOURCE_NAME)-$(VERSION)!g;s!VERSION!$(VERSION)!g" \
+	  > $(REDHAT.ROOT)/src/build-$(SOURCE_NAME)-modules/$(SOURCE_NAME)-$(VERSION).module
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
 clean::
