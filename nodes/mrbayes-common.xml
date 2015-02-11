@@ -18,6 +18,7 @@
 	</changelog>
 
 	<package>mrbayes</package>
+	<package>mrbayes-3.2.3</package>
         <package>mrbayes-modules</package>
         <package>mrbayes-roll-test</package>
 

@@ -69,7 +69,7 @@ build: $(SRC_DIRS)
 	( \
           . /etc/profile.d/modules.sh; \
           module load intel; \
-          module load openmpi_ib; \
+          module load mvapich2_ib; \
           module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \

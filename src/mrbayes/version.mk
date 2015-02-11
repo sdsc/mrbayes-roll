@@ -1,6 +1,6 @@
-VERSION            = 3.2.3
+VERSION            = 3.2.4
 NAME               = mrbayes
-RELEASE            = 6
+RELEASE            = 0
 TARBALL_POSTFIX    = tar.gz
 
 SRC_SUBDIR         = mrbayes

@@ -1,6 +1,6 @@
 ROLLNAME	= mrbayes
 VERSION		= 1.0
-RELEASE		= 7
+RELEASE		= 8
 COLOR		= firebrick
 
 REDHAT.ROOT	= $(CURDIR)
