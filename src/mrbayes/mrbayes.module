@@ -6,7 +6,7 @@ cat > ROOT_PKGROOTMODULEROOT/VERSION <<END
 module-whatis "mrbayes"
 module-whatis "Version: VERSION"
 module-whatis "Description: mrbayes"
-module-whatis "Compiler:intel MPI:openmpi"
+module-whatis "Compiler:intel MPI:mvapich2"
 set mrbayeshome /opt/mrbayes/VERSION
 setenv MRBAYES_HOME \$mrbayeshome
 prepend-path PATH \$mrbayeshome/bin
