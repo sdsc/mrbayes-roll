@@ -1,6 +1,6 @@
---- mrbayes-3.2.4/src/bayes.h	2015-01-30 06:37:47.000000000 -0800
-+++ patch-files/bayes.h	2015-02-11 13:22:19.567552349 -0800
-@@ -292,7 +292,7 @@
+--- mrbayes-3.2.3/src/bayes.h	2014-10-22 05:01:24.000000000 -0700
++++ patch-files/bayes.h	2014-11-26 10:22:49.564906922 -0800
+@@ -291,7 +291,7 @@
  #define POSREAL_MIN             1E-25f
  #define POSREAL_MAX             1E25f
  

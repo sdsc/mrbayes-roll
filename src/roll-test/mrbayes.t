@@ -10,6 +10,7 @@ my $appliance = $#ARGV >= 0 ? $ARGV[0] :
                 -d '/export/rocks/install' ? 'Frontend' : 'Compute';
 my $installedOnAppliancesPattern = '.';
 my $isInstalled = -d '/opt/mrbayes';
+my @VERSIONS = '3.2.3 3.2.4';
 
 # mrbayes-common.xml
 if($appliance =~ /$installedOnAppliancesPattern/) {
@@ -20,8 +21,10 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
 
 SKIP: {
   skip 'mrbayes not installed', 1 if ! -d '/opt/mrbayes';
-  @output=`. /etc/profile.d/modules.sh;module load intel; module load mrbayes;mb</dev/null`;
-  ok(grep(/\(Bayesian Analysis of Phylogeny\)/,@output) gt 0, 'mrbayes works');
+  foreach my $VERS(@VERSIONS) {
+     @output=`. /etc/profile.d/modules.sh;module load intel; module load mrbayes/$VERS;mb</dev/null`;
+     ok(grep(/\(Bayesian Analysis of Phylogeny\)/,@output) gt 0, 'mrbayes version $VERSworks');
+   }
 }
 
 SKIP: {

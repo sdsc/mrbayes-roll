@@ -17,8 +17,9 @@
 	$Log$
 	</changelog>
 
-	<package>mrbayes</package>
-        <package>mrbayes-modules</package>
-        <package>mrbayes-roll-test</package>
+	<package>sdsc-mrbayes</package>
+	<package>sdsc-mrbayes-3.2.3</package>
+        <package>sdsc-mrbayes-modules</package>
+        <package>sdsc-mrbayes-roll-test</package>
 
 </kickstart>
