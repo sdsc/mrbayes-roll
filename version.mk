@@ -1,6 +1,6 @@
-ROLLNAME	= mrbayes
-VERSION		= 1.0
-RELEASE		= 8
-COLOR		= firebrick
+ROLLNAME        = mrbayes
+VERSION        :=$(shell bash version.sh -v)
+RELEASE        :=$(shell bash version.sh -h)
+COLOR           = orange
 
-REDHAT.ROOT	= $(CURDIR)
+REDHAT.ROOT     = $(PWD)
