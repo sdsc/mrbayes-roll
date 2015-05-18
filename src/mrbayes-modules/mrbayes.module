@@ -6,12 +6,6 @@ module-whatis "Compiler:intel MPI:ROLLMPI"
 set mrbayeshome /opt/mrbayes/VERSION
 setenv MRBAYES_HOME $mrbayeshome
 prepend-path PATH $mrbayeshome/bin
-if {  [ module-info mode load ]  } {
-      module unload mvapich2_ib
-      module load ROLLMPI
-      module load beagle/2.1
-} elseif {  [ module-info mode remove ]  } {
-      module unload beagle/2.1
-      module unload ROLLMPI
-      module load mvapich2_ib
-}
+module load beagle/2.1
+module unload mvapich2_ib
+module load ROLLMPI
