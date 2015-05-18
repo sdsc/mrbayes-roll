@@ -58,13 +58,13 @@
 #
 
 REDHAT.ROOT = $(CURDIR)/../../
+ROLLCOMPILER=intel
+ROLLMPI=mvapich2_ib
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
-ROLLCOMPILER=intel
-ROLLMPI=mvapich2_ib
 
 $(NAME).spec: DESCRIPTION LICENSE
 

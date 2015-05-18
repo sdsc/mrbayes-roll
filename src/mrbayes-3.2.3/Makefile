@@ -59,12 +59,13 @@
 
 REDHAT.ROOT = $(CURDIR)/../../
 
+ROLLCOMPILER=intel
+ROLLMPI=openmpi_ib
+
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
-ROLLCOMPILER=intel
-ROLLMPI=openmpi_ib
 
 $(NAME).spec: DESCRIPTION LICENSE
 
