@@ -1,3 +1,15 @@
+ifndef ROLLCOMPILER
+  ROLLCOMPILER = gnu
+endif
+COMPILERNAME := $(firstword $(subst /, ,$(ROLLCOMPILER)))
+
+ifndef ROLLMPI
+  ROLLMPI = rocks-openmpi
+endif
+
+MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
+
+
 VERSION            = 3.2.3
 NAME               = sdsc-mrbayes-$(VERSION)
 RELEASE            = 0
@@ -13,3 +25,5 @@ SOURCE_DIR         = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
 PKGROOT            = /opt/mrbayes/$(VERSION)
 
 TAR_GZ_PKGS        = $(SOURCE_PKG)
+
+RPM.EXTRAS     = AutoReq:No
