@@ -112,4 +112,4 @@ install::
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
 clean::
-	rm -rf $(SOURCE_DIR)
+	rm -rf $(SOURCE_DIR) DESCRIPTION LICENSE
