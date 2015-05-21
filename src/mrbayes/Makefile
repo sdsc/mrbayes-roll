@@ -87,6 +87,7 @@ build: $(SRC_DIRS)
 	( \
           $(MODULE_LOAD_CC); \
           $(MODULE_LOAD_MPI); \
+          cp -r $(UPDATE_DIR)/* $(SOURCE_DIR) ; \
           module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \
@@ -112,4 +113,4 @@ install::
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
 clean::
-	rm -rf $(SOURCE_DIR) DESCRIPTION LICENSE
+	rm -rf $(SOURCE_DIR) $(UPDATE_DIR) DESCRIPTION LICENSE
