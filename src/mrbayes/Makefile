@@ -82,12 +82,12 @@ LICENSE: $(SRC_DIRS)
 
 
 build: $(SRC_DIRS)
-	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
 	patch $(SOURCE_DIR)/src/bayes.h patch-files/bayes.h.patch
 	( \
           $(MODULE_LOAD_CC); \
           $(MODULE_LOAD_MPI); \
           cp -r $(UPDATE_DIR)/* $(SOURCE_DIR) ; \
+          patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch; \
           module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \
