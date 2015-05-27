@@ -5,7 +5,7 @@ include Rules.mk
 include $(SDSCDEVEL)/Rules.mk
 
 $(VERSION_INC): $(VERSION_SRC)
-	/bin/grep 'SOURCE_VERSION.*=' $(VERSION_SRC) > $@
+	/bin/grep 'VERSION.*=' $(VERSION_SRC) > $@
 	/bin/grep 'ROLLMPI=' $(MAKEFILE_SRC) >> $@
 	cat $@ |sed 's/SOURCE_//' >.tmp
 	mv .tmp $@
