@@ -10,7 +10,7 @@ endif
 MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
 
 
-VERSION            = 3.2.5
+VERSION            = 3.2.6
 NAME               = sdsc-mrbayes-$(VERSION)
 RELEASE            = 1
 TARBALL_POSTFIX    = tar.gz
