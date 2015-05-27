@@ -59,17 +59,35 @@
 
 REDHAT.ROOT = $(CURDIR)/../../
 
+ROLLCOMPILER=intel
+ROLLMPI=openmpi_ib
+
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
-include pull.mk
+include $(SDSCDEVEL)/Pull.mk
+include $(SDSCDEVEL)/Rules.mk
+
+$(NAME).spec: DESCRIPTION LICENSE
+
+DESCRIPTION:
+	$(MODULE_LOAD_CC); \
+        ( \
+          $(DESCRIBE_PKG); \
+          $(DESCRIBE_CC); \
+          $(DESCRIBE_MPI); \
+        ) > $@
+
+LICENSE: $(SRC_DIRS)
+	$(CHECK_LICENSE_FILES)
+	echo University of Illinois > $@
+
 
 build: $(SRC_DIRS)
 	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
 	patch $(SOURCE_DIR)/src/bayes.h patch-files/bayes.h.patch
 	( \
-          . /etc/profile.d/modules.sh; \
-          module load intel; \
-          module load openmpi_ib; \
+          $(MODULE_LOAD_CC); \
+          $(MODULE_LOAD_MPI); \
           module load beagle/2.1; \
 	  cd $(SOURCE_DIR)/src; \
           autoconf; \
@@ -81,10 +99,8 @@ build: $(SRC_DIRS)
 	@echo "::: Package $(SOURCE_NAME) build complete :::"
 	
 install::
-	mkdir -p $(PKGROOT)
 	mkdir -p $(ROOT)/$(PKGROOT)/bin
-	mkdir -p $(REDHAT.ROOT)/src/build-mrbayes-modules
-	mount --bind $(ROOT)/$(PKGROOT) $(PKGROOT)
+	$(PKGROOT_BIND_MOUNT)
 	( \
 	  cd $(SOURCE_DIR)/src; \
 	  $(MAKE) install; \
@@ -92,10 +108,9 @@ install::
           cd ..; \
           cp -r examples documentation $(PKGROOT) \
 	)
-	-umount $(PKGROOT)
-	cat mrbayes-3.2.3.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/$(SOURCE_NAME)!g;s!VERSION!$(VERSION)!g" \
-	  > $(REDHAT.ROOT)/src/build-$(SOURCE_NAME)-modules/$(SOURCE_NAME)-$(VERSION).module
+	$(INSTALL_LICENSE_FILES)
+	$(PKGROOT_BIND_UMOUNT)
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
 clean::
-	rm -rf $(SOURCE_DIR)
+	rm -rf $(SOURCE_DIR) DESCRIPTION LICENSE

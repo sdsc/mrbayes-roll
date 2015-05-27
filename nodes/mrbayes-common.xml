@@ -18,6 +18,7 @@
 	</changelog>
 
 	<package>sdsc-mrbayes</package>
+	<package>sdsc-mrbayes-3.2.4</package>
 	<package>sdsc-mrbayes-3.2.3</package>
         <package>sdsc-mrbayes-modules</package>
         <package>sdsc-mrbayes-roll-test</package>

@@ -57,12 +57,60 @@
 # $Log$
 #
 
--include $(ROLLSROOT)/etc/Rolls.mk
-include Rolls.mk
+REDHAT.ROOT = $(CURDIR)/../../
 
-default: roll
+ROLLCOMPILER=intel
+ROLLMPI=mvapich2_ib
+
+-include $(ROCKSROOT)/etc/Rules.mk
+include Rules.mk
+include $(SDSCDEVEL)/Pull.mk
+include $(SDSCDEVEL)/Rules.mk
+
+$(NAME).spec: DESCRIPTION LICENSE
+
+DESCRIPTION:
+	$(MODULE_LOAD_CC); \
+        ( \
+          $(DESCRIBE_PKG); \
+          $(DESCRIBE_CC); \
+          $(DESCRIBE_MPI); \
+        ) > $@
+
+LICENSE: $(SRC_DIRS)
+	$(CHECK_LICENSE_FILES)
+	echo University of Illinois > $@
 
 
-distclean:: clean
-	-rm -f _arch build.log
-	-rm -rf RPMS SRPMS src/build-*
+build: $(SRC_DIRS)
+	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
+	patch $(SOURCE_DIR)/src/bayes.h patch-files/bayes.h.patch
+	( \
+          $(MODULE_LOAD_CC); \
+          $(MODULE_LOAD_MPI); \
+          module load beagle/2.1; \
+	  cd $(SOURCE_DIR)/src; \
+          autoconf; \
+          export CC=mpicc; \
+          export CFLAGS=-xHost; \
+	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \
+	  $(MAKE); \
+	)
+	@echo "::: Package $(SOURCE_NAME) build complete :::"
+	
+install::
+	mkdir -p $(ROOT)/$(PKGROOT)/bin
+	$(PKGROOT_BIND_MOUNT)
+	( \
+	  cd $(SOURCE_DIR)/src; \
+	  $(MAKE) install; \
+          cp mb $(PKGROOT)/bin; \
+          cd ..; \
+          cp -r examples documentation $(PKGROOT) \
+	)
+	$(INSTALL_LICENSE_FILES)
+	$(PKGROOT_BIND_UMOUNT)
+	@echo "::: Package $(SOURCE_NAME) install complete :::"
+
+clean::
+	rm -rf $(SOURCE_DIR) DESCRIPTION LICENSE
