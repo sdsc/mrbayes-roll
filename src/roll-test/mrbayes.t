@@ -10,7 +10,7 @@ my $appliance = $#ARGV >= 0 ? $ARGV[0] :
                 -d '/export/rocks/install' ? 'Frontend' : 'Compute';
 my $installedOnAppliancesPattern = '.';
 my $isInstalled = -d '/opt/mrbayes';
-my @VERSIONS = ("3.2.3","3.2.4","3.2.5");
+my @VERSIONS = ("3.2.3","3.2.6");
 
 # mrbayes-common.xml
 if($appliance =~ /$installedOnAppliancesPattern/) {
