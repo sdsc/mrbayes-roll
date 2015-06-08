@@ -11,8 +11,8 @@ MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
 
 
 VERSION            = 3.2.6
-NAME               = sdsc-mrbayes
-RELEASE            = 2
+NAME               = sdsc-mrbayes-$(VERSION)
+RELEASE            = 3
 TARBALL_POSTFIX    = tar.gz
 
 SRC_SUBDIR         = mrbayes
