@@ -53,28 +53,33 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 # @Copyright@
-#
-# $Log$
-#
 
-REDHAT.ROOT = $(CURDIR)/../../
-ROLLCOMPILER=intel
-ROLLMPI=mvapich2_ib
+REDHAT.ROOT = $(PWD)/../../
 
 -include $(ROCKSROOT)/etc/Rules.mk
-include Rules.mk
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
+
+DESCRIBE_BEAGLE = echo built with beagle $(call GET_MODULE_VERSION, beagle)
+MODULE_LOAD_BEAGLE = $(call MODULE_LOAD_PACKAGE, beagle, BEAGLE_HOME)
+
+COMPILE_FLAGS =
+ifeq ("$(COMPILERNAME)", "intel")
+  COMPILE_FLAGS = -xHost
+else ifeq("$(COMPILERNAME)","pgi")
+  COMPILE_FLAGS =
+endif
 
 $(NAME).spec: DESCRIPTION LICENSE
 
 DESCRIPTION:
 	$(MODULE_LOAD_CC); \
-        ( \
-          $(DESCRIBE_PKG); \
-          $(DESCRIBE_CC); \
-          $(DESCRIBE_MPI); \
-        ) > $@
+	( \
+	  $(DESCRIBE_PKG); \
+	  $(DESCRIBE_CC); \
+	  $(DESCRIBE_MPI); \
+	  $(DESCRIBE_BEAGLE) \
+	) > $@
 
 LICENSE: $(SRC_DIRS)
 	$(CHECK_LICENSE_FILES)
@@ -82,34 +87,34 @@ LICENSE: $(SRC_DIRS)
 
 
 build: $(SRC_DIRS)
+	cp -r $(UPDATE_DIR)/* $(SOURCE_DIR)/
 	patch $(SOURCE_DIR)/src/bayes.h patch-files/bayes.h.patch
+	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
 	( \
-          $(MODULE_LOAD_CC); \
-          $(MODULE_LOAD_MPI); \
-          cp -r $(UPDATE_DIR)/* $(SOURCE_DIR) ; \
-          patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch; \
-          module load beagle/2.1; \
+	  $(MODULE_LOAD_CC); \
+	  $(MODULE_LOAD_MPI); \
+	  $(MODULE_LOAD_BEAGLE); \
 	  cd $(SOURCE_DIR)/src; \
-          autoconf; \
-          export CC=mpicc; \
-          export CFLAGS=-xHost; \
+	  autoconf; \
+	  export CC=mpicc; \
+	  export CFLAGS=$(COMPILE_FLAGS); \
 	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \
-	  $(MAKE); \
+	  $(MAKE) \
 	)
 	@echo "::: Package $(SOURCE_NAME) build complete :::"
 	
 install::
-	mkdir -p $(ROOT)/$(PKGROOT)/bin
+	mkdir -p -m 755 $(ROOT)/$(PKGROOT)/bin
 	$(PKGROOT_BIND_MOUNT)
 	( \
 	  cd $(SOURCE_DIR)/src; \
 	  $(MAKE) install; \
-          cp mb $(PKGROOT)/bin; \
-          cd ..; \
-          cp -r examples documentation $(PKGROOT) \
+	  cp mb $(ROOT)/$(PKGROOT)/bin/; \
+	  cd ..; \
+	  cp -r examples documentation $(ROOT)/$(PKGROOT)/ \
 	)
-	$(INSTALL_LICENSE_FILES)
 	$(PKGROOT_BIND_UMOUNT)
+	$(INSTALL_LICENSE_FILES)
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
 clean::
