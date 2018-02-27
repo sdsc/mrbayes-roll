@@ -2,31 +2,30 @@
 
 <graph>
 
-	<description>
+<description>
 
-	The mrbayes Roll http://mrbayes.sourceforge.net/
+The mrbayes Roll http://mrbayes.sourceforge.net/
 
-	</description>
+</description>
 
-	<copyright>
-	Copyright (c) 2000 - 2014 The Regents of the University of California.
-	All rights reserved. Rocks(r) v6.1.1 www.rocksclusters.org
-	
-	</copyright>
+<copyright>
+Copyright (c) 2000 - 2017 The Regents of the University of California.
+All rights reserved. Rocks(r) v7.0 www.rocksclusters.org
 
-	<changelog>
-	$Log$
-	</changelog>
+</copyright>
 
-	<!-- add edges here -->
-	<edge from="base">
-		<to>mrbayes-common</to>
-	</edge>
+<edge from="compute">
+  <to>mrbayes-common</to>
+</edge>
+<order head="compute">
+  <tail>mrbayes-common</tail>
+</order>
 
-	<!-- enforce post section ordering -->
-	<!-- mrbayes-base post sections execute after base post sections -->
-	<order head="base">
-		<tail>mrbayes-common</tail>
-	</order>
+<edge from="login">
+  <to>mrbayes-common</to>
+</edge>
+<order head="login">
+  <tail>mrbayes-common</tail>
+</order>
 
 </graph>
