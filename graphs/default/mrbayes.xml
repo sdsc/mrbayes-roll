@@ -14,10 +14,17 @@ All rights reserved. Rocks(r) v7.0 www.rocksclusters.org
 
 </copyright>
 
-<edge from="base">
+<edge from="compute">
   <to>mrbayes-common</to>
 </edge>
-<order head="base">
+<order head="compute">
+  <tail>mrbayes-common</tail>
+</order>
+
+<edge from="login">
+  <to>mrbayes-common</to>
+</edge>
+<order head="login">
   <tail>mrbayes-common</tail>
 </order>
 
