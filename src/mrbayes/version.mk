@@ -10,7 +10,7 @@ MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
 
 NAME           = sdsc-mrbayes-$(VERSION)
 VERSION        = 3.2.6
-RELEASE        = 4
+RELEASE        = 5
 PKGROOT        = /opt/mrbayes/$(VERSION)
 
 SRC_SUBDIR     = mrbayes
@@ -29,4 +29,5 @@ UPDATE_DIR     = $(UPDATE_PKG:%.$(UPDATE_SUFFIX)=%)
 
 TAR_GZ_PKGS    = $(SOURCE_PKG) $(UPDATE_PKG)
 
-RPM.EXTRAS     = AutoReq:No
+RPM.EXTRAS     = AutoReq:No\nAutoProv:No
+RPM.PREFIX     = $(PKGROOT)

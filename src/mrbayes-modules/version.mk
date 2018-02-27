@@ -10,7 +10,7 @@ PACKAGE     = mrbayes
 CATEGORY    = applications
 
 NAME        = sdsc-$(PACKAGE)-modules
-RELEASE     = 5
+RELEASE     = 6
 PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
 
 VERSION_SRC = $(REDHAT.ROOT)/src/$(PACKAGE)/version.mk
@@ -19,5 +19,5 @@ include $(VERSION_INC)
 
 EXTRA_MODULE_VERSIONS = 3.2.3
 
-RPM.EXTRAS  = AutoReq:No
-
+RPM.EXTRAS  = AutoReq:No\nAutoProv:No
+RPM.PREFIX  = $(PKGROOT)
