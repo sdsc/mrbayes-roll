@@ -10,7 +10,7 @@ my $appliance = $#ARGV >= 0 ? $ARGV[0] :
                 -d '/export/rocks/install' ? 'Frontend' : 'Compute';
 my $installedOnAppliancesPattern = '.';
 my $isInstalled = -d '/opt/mrbayes';
-my @VERS = ("3.2.3","3.2.6");
+my @VERS = ("3.2.7a");
 
 my $output;
 
