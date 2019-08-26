@@ -107,7 +107,7 @@ install::
 	  $(MAKE) install; \
 	  cp mb $(ROOT)/$(PKGROOT)/bin/; \
 	  cd ..; \
-	  cp -r examples documentation $(ROOT)/$(PKGROOT)/ \
+	  cp -r examples $(ROOT)/$(PKGROOT)/ \
 	)
 	$(PKGROOT_BIND_UMOUNT)
 	$(INSTALL_LICENSE_FILES)
