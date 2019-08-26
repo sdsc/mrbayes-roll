@@ -8,10 +8,10 @@ ifndef ROLLMPI
 endif
 MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
 
-NAME           = sdsc-mrbayes-$(VERSION)
+NAME           = sdsc-mrbayes
 VERSION        = 3.2.7a
 RELEASE        = 0
-PKGROOT        = /opt/mrbayes/$(VERSION)
+PKGROOT        = /opt/mrbayes
 
 SRC_SUBDIR     = mrbayes
 

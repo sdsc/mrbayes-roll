@@ -3,7 +3,7 @@ module-whatis "mrbayes"
 module-whatis "Version: VERSION"
 module-whatis "Description: mrbayes"
 module-whatis "Compiler:ROLLCOMPILER MPI:ROLLMPI"
-set mrbayeshome /opt/mrbayes/VERSION
+set mrbayeshome /opt/mrbayes
 setenv MRBAYES_HOME $mrbayeshome
 prepend-path PATH $mrbayeshome/bin
 module load ROLLCOMPILER ROLLMPI beagle
