@@ -91,8 +91,7 @@ build: $(SRC_DIRS)
 	  $(MODULE_LOAD_CC); \
 	  $(MODULE_LOAD_MPI); \
 	  $(MODULE_LOAD_BEAGLE); \
-	  cd $(SOURCE_DIR)/src; \
-	  autoconf; \
+	  cd $(SOURCE_DIR); \
 	  export CC=mpicc; \
 	  export CFLAGS=$(COMPILE_FLAGS); \
 	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \
