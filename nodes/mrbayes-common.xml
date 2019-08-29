@@ -12,8 +12,7 @@ All rights reserved. Rocks(r) v7.0 www.rocksclusters.org
 
 </copyright>
 
-<package>sdsc-mrbayes-3.2.6</package>
-<package>sdsc-mrbayes-3.2.3</package>
+<package>sdsc-mrbayes</package>
 <package>sdsc-mrbayes-modules</package>
 <package>sdsc-mrbayes-roll-test</package>
 

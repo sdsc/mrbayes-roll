@@ -87,15 +87,11 @@ LICENSE: $(SRC_DIRS)
 
 
 build: $(SRC_DIRS)
-	cp -r $(UPDATE_DIR)/* $(SOURCE_DIR)/
-	patch $(SOURCE_DIR)/src/bayes.h patch-files/bayes.h.patch
-	patch $(SOURCE_DIR)/src/configure.in patch-files/configure.in.patch
 	( \
 	  $(MODULE_LOAD_CC); \
 	  $(MODULE_LOAD_MPI); \
 	  $(MODULE_LOAD_BEAGLE); \
-	  cd $(SOURCE_DIR)/src; \
-	  autoconf; \
+	  cd $(SOURCE_DIR); \
 	  export CC=mpicc; \
 	  export CFLAGS=$(COMPILE_FLAGS); \
 	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \
@@ -111,11 +107,11 @@ install::
 	  $(MAKE) install; \
 	  cp mb $(ROOT)/$(PKGROOT)/bin/; \
 	  cd ..; \
-	  cp -r examples documentation $(ROOT)/$(PKGROOT)/ \
+	  cp -r examples $(ROOT)/$(PKGROOT)/ \
 	)
 	$(PKGROOT_BIND_UMOUNT)
 	$(INSTALL_LICENSE_FILES)
 	@echo "::: Package $(SOURCE_NAME) install complete :::"
 
 clean::
-	rm -rf $(SOURCE_DIR) $(UPDATE_DIR) DESCRIPTION LICENSE
+	rm -rf $(SOURCE_DIR) DESCRIPTION LICENSE

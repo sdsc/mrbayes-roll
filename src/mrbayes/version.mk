@@ -8,24 +8,18 @@ ifndef ROLLMPI
 endif
 MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
 
-NAME           = sdsc-mrbayes-$(VERSION)
-VERSION        = 3.2.6
-RELEASE        = 5
-PKGROOT        = /opt/mrbayes/$(VERSION)
+NAME           = sdsc-mrbayes
+VERSION        = 3.2.7a
+RELEASE        = 0
+PKGROOT        = /opt/mrbayes
 
 SRC_SUBDIR     = mrbayes
 
-SOURCE_NAME    = mrbayes
+SOURCE_NAME    = MrBayes
 SOURCE_SUFFIX  = tar.gz
-SOURCE_VERSION = 3.2.5
+SOURCE_VERSION = $(VERSION)
 SOURCE_PKG     = $(SOURCE_NAME)-$(SOURCE_VERSION).$(SOURCE_SUFFIX)
 SOURCE_DIR     = $(SOURCE_PKG:%.$(SOURCE_SUFFIX)=%)
-
-UPDATE_NAME    = mrbayes
-UPDATE_SUFFIX  = tar.gz
-UPDATE_VERSION = 3.2.5-1040
-UPDATE_PKG     = $(UPDATE_NAME)-$(UPDATE_VERSION).$(UPDATE_SUFFIX)
-UPDATE_DIR     = $(UPDATE_PKG:%.$(UPDATE_SUFFIX)=%)
 
 TAR_GZ_PKGS    = $(SOURCE_PKG) $(UPDATE_PKG)
 
