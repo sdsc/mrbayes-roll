@@ -10,7 +10,7 @@ MPINAME := $(firstword $(subst /, ,$(ROLLMPI)))
 
 NAME           = sdsc-mrbayes
 VERSION        = 3.2.7a
-RELEASE        = 0
+RELEASE        = 1
 PKGROOT        = /opt/mrbayes
 
 SRC_SUBDIR     = mrbayes

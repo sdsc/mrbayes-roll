@@ -94,7 +94,7 @@ build: $(SRC_DIRS)
 	  cd $(SOURCE_DIR); \
 	  export CC=mpicc; \
 	  export CFLAGS=$(COMPILE_FLAGS); \
-	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --enable-mpi; \
+	  ./configure --prefix=$(PKGROOT) --with-beagle=$${BEAGLE_HOME} --with-mpi; \
 	  $(MAKE) \
 	)
 	@echo "::: Package $(SOURCE_NAME) build complete :::"

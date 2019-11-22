@@ -24,7 +24,7 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
 SKIP: {
   skip 'mrbayes not installed', 1 if ! -d '/opt/mrbayes';
   foreach my $V(@VERS)  {
-     $output = `module load mrbayes/$V; mb</dev/null`;
+     $output = `module load mrbayes/$V; mpirun -np 1 mb</dev/null`;
      like($output, qr/\(Bayesian Analysis of Phylogeny\)/,
           "mrbayes version $V works");
    }
